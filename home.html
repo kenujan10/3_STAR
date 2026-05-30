@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3 Star Events | Premium Event Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#ffedea",
+                        "inverse-primary": "#ffb4ac",
+                        "on-secondary-fixed": "#001453",
+                        "on-surface": "#271716",
+                        "tertiary": "#9f3a37",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#271716",
+                        "outline": "#906f6c",
+                        "primary": "#E53935",
+                        "secondary": "#1A237E",
+                        "surface-container-low": "#fff0ee",
+                        "outline-variant": "#e4beb9",
+                        "surface-container": "#ffe9e6",
+                        "on-secondary-fixed-variant": "#173bab",
+                        "surface-tint": "#E53935",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-bright": "#fff8f7",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "secondary-fixed": "#dde1ff",
+                        "on-tertiary-fixed-variant": "#832524",
+                        "on-primary-fixed-variant": "#93000d",
+                        "primary-fixed": "#ffdad6",
+                        "primary-fixed-dim": "#ffb4ac",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#00217a",
+                        "tertiary-fixed-dim": "#ffb3ae",
+                        "surface-dim": "#f1d3d0",
+                        "surface": "#fff8f7",
+                        "tertiary-container": "#bf514d",
+                        "on-surface-variant": "#5b403d",
+                        "surface-container-highest": "#fadcd8",
+                        "surface-container-high": "#ffe2de",
+                        "on-primary-fixed": "#410002",
+                        "on-tertiary-fixed": "#410004",
+                        "secondary-container": "#1A237E",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#E53935",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#b8c4ff",
+                        "tertiary-fixed": "#ffdad7",
+                        "background": "#fff8f7",
+                        "inverse-surface": "#3e2c2a",
+                        "surface-variant": "#fadcd8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap-desktop": "120px",
+                        "base": "8px",
+                        "grid-gutter": "24px",
+                        "section-gap-mobile": "64px",
+                        "container-padding": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Montserrat"],
+                        "display-lg-mobile": ["Montserrat"],
+                        "headline-lg": ["Montserrat"],
+                        "headline-md": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease-in-out;
+        }
+        .glass-card:hover {
+            border-color: #E53935;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(229, 57, 53, 0.2);
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+        .primary-gradient-btn {
+            background: linear-gradient(135deg, #E53935 0%, #1A237E 100%);
+            transition: transform 0.2s ease-in-out;
+        }
+        .primary-gradient-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px -5px rgba(229, 57, 53, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="pb-24 md:pb-0 bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white dark:bg-white border-b border-outline-variant shadow-md transition-all duration-300">
+<nav class="max-w-7xl mx-auto flex justify-between items-center px-container-padding py-2 md:py-3">
+<a class="flex items-center shrink-0" href="home.html" aria-label="3 Star Event Management home">
+<img alt="3 Star Event Management Logo" class="h-10 md:h-14 w-auto object-contain" src="assets/logo.png"/>
+</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-primary dark:text-inverse-primary border-b-2 border-primary transition-colors duration-200" href="home.html">Home</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface dark:text-on-background opacity-80 hover:text-primary transition-colors duration-200" href="gallery.html">Gallery</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface dark:text-on-background opacity-80 hover:text-primary transition-colors duration-200" href="contact.html">Contact</a>
+</div>
+<div class="hidden md:flex items-center gap-4">
+<a class="flex items-center gap-2 px-6 py-2.5 rounded-full primary-gradient-btn text-on-primary font-label-sm uppercase tracking-wider" href="tel:+94773288244">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>Call Us</span>
+</a>
+</div>
+<a class="md:hidden inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-2 text-white font-label-sm text-[11px] uppercase tracking-wider shadow-md active:scale-95 transition" href="tel:+94773288244" aria-label="Call 3 Star Event Management"><span class="material-symbols-outlined text-[16px]">call</span><span>Call Us</span></a>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A luxurious wedding reception hall decorated with cascading white drapes and warm, atmospheric fairy lights. Crystal chandeliers hang from the ceiling, reflecting off polished wooden floors. The color palette is dominated by soft creams, whites, and deep red accents from rose centerpieces. The mood is romantic, high-end, and dreamlike with soft lens flares." src="assets/event-01.jpg"/>
+
+</div>
+<div class="container max-w-7xl mx-auto px-container-padding relative z-10 text-white">
+<div class="max-w-2xl animate-fade-in-up">
+<span class="inline-block px-4 py-1 rounded-full bg-primary/20 border border-primary/30 text-white font-label-sm uppercase tracking-[0.2em] mb-6">
+                        Excellence in Execution
+                    </span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">
+                        Making Your Special <span class="text-primary">Moments</span> Unforgettable
+                    </h1>
+<p class="font-body-lg text-body-lg mb-10 opacity-90 leading-relaxed">
+                        From grand weddings to corporate galas, we blend structural precision with bespoke artistic vision to create atmospheres that resonate with luxury and sophistication.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="px-10 py-4 rounded-full primary-gradient-btn text-white font-label-sm uppercase tracking-widest text-center shadow-lg" href="gallery.html">
+                            View Gallery
+                        </a>
+<a class="px-10 py-4 rounded-full border border-white/50 text-white font-label-sm uppercase tracking-widest text-center hover:bg-white/10 transition-colors" href="contact.html">
+                            Contact Us
+                        </a>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+<span class="material-symbols-outlined text-white text-3xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop bg-surface-bright">
+<div class="container max-w-7xl mx-auto px-container-padding">
+<div class="text-center max-w-3xl mx-auto mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 uppercase tracking-tighter">Bespoke Event Services</h2>
+<div class="h-1 w-24 bg-primary mx-auto mb-6"></div>
+<p class="text-on-surface-variant font-body-md opacity-80">We offer a comprehensive suite of event design and management solutions tailored to the most discerning clients.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-grid-gutter">
+<!-- Wedding Decor -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">favorite</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Wedding Decor</h3>
+<p class="text-on-surface-variant text-body-md">Grand floral arrangements and themed stage designs that turn your fairytale wedding into a living reality.</p>
+</div>
+<!-- Birthday -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">cake</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Birthday Parties</h3>
+<p class="text-on-surface-variant text-body-md">Creative and vibrant setups for all ages, from whimsical kids' parties to sophisticated milestone celebrations.</p>
+</div>
+<!-- Engagement -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">diamond</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Engagement</h3>
+<p class="text-on-surface-variant text-body-md">Elegant and intimate decor settings that perfectly frame the beginning of your lifelong journey together.</p>
+</div>
+<!-- Corporate -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">business_center</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Corporate Events</h3>
+<p class="text-on-surface-variant text-body-md">Professional, high-impact environments for conferences, award nights, and gala dinners that reflect brand excellence.</p>
+</div>
+<!-- Stage -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">theater_comedy</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Stage Decoration</h3>
+<p class="text-on-surface-variant text-body-md">Stunning visual focal points utilizing light, texture, and structural elements to captivate every attendee.</p>
+</div>
+<!-- Flower -->
+<div class="glass-card p-8 rounded-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6 text-primary">
+<span class="material-symbols-outlined text-3xl">local_florist</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 text-on-surface">Flower Arrangements</h3>
+<p class="text-on-surface-variant text-body-md">Exotic and local blooms masterfully curated to add organic elegance and scent to your event space.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop bg-surface-container-low overflow-hidden" id="about">
+<div class="container max-w-7xl mx-auto px-container-padding">
+<div class="flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 relative">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+<img class="rounded-2xl shadow-2xl relative z-10 w-full h-[500px] object-cover" data-alt="A professional event planning team working in a bright studio. They are surrounded by fabric swatches in various shades of red and blue, floral mockups, and large digital tablets displaying event 3D renders. The environment is creative and organized, showcasing high-end professional collaboration and artistic planning." src="assets/event-02.jpg"/>
+<div class="absolute -bottom-6 -right-6 bg-primary text-white p-8 rounded-xl shadow-xl z-20">
+<p class="font-display-lg text-4xl mb-0">15+</p>
+<p class="font-label-sm uppercase tracking-widest opacity-80">Years Experience</p>
+</div>
+</div>
+<div class="lg:w-1/2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">Why 3 Star Event Management?</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex gap-4">
+<div class="text-primary mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold mb-2">Creative Designs</h4>
+<p class="text-on-surface-variant text-body-md">Unique concepts tailored to your personality and brand vision.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="text-primary mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold mb-2">Quality Service</h4>
+<p class="text-on-surface-variant text-body-md">Uncompromising attention to detail in every aspect of planning.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="text-primary mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold mb-2">Affordable Packages</h4>
+<p class="text-on-surface-variant text-body-md">Premium luxury tailored to fit your specific investment goals.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="text-primary mt-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div>
+<h4 class="font-headline-md text-body-lg font-bold mb-2">Professional Team</h4>
+<p class="text-on-surface-variant text-body-md">A dedicated group of experts passionate about event perfection.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery Preview (Bento/Masonry Hybrid) -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop" id="gallery">
+<div class="container max-w-7xl mx-auto px-container-padding">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Crafting Visual Masterpieces</h2>
+<p class="text-on-surface-variant text-body-md">Browse our recent projects and see how we transform ordinary spaces into extraordinary experiences.</p>
+</div>
+<a class="px-8 py-3 rounded-full border-2 border-primary text-primary font-label-sm uppercase tracking-widest hover:bg-primary hover:text-white transition-all" href="#">
+                        View Full Gallery
+                    </a>
+</div>
+<div class="columns-1 md:columns-2 lg:columns-3 gap-6">
+<div class="masonry-item">
+<div class="group relative overflow-hidden rounded-xl">
+<img class="w-full transition-all duration-500 transform group-hover:scale-110" data-alt="A grand corporate gala entrance featuring a long red carpet flanked by dramatic floor-standing floral columns. High-contrast lighting highlights the sleek, modern architecture of the venue. The atmosphere is prestigious and high-profile, reflecting the excellence of a 3 Star Events corporate project." src="assets/event-03.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Corporate Gala</span>
+<p class="text-white/80 text-sm">Strategic Event Planning</p>
+</div>
+</div>
+</div>
+<div class="masonry-item">
+<div class="group relative overflow-hidden rounded-xl">
+<img class="w-full transition-all duration-500 transform group-hover:scale-110" data-alt="An ethereal outdoor wedding mandap decorated with hundreds of hanging marigold strings and jasmine flowers. The late afternoon sunlight filters through the flowers creating a warm, golden glow. This image captures a serene and traditional yet high-end Indian wedding setup by 3 Star Event Management." src="assets/event-04.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Wedding Bliss</span>
+<p class="text-white/80 text-sm">Traditional Mandap Decor</p>
+</div>
+</div>
+</div>
+<div class="masonry-item">
+<div class="group relative overflow-hidden rounded-xl">
+<img class="w-full transition-all duration-500 transform group-hover:scale-110" data-alt="A sophisticated birthday dinner table setting featuring deep blue linens, gold cutlery, and crimson red rose centerpieces. Low-key lighting with glowing candlelight creates an intimate and luxurious atmosphere for a milestone birthday celebration managed by 3 Star Events." src="assets/event-05.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Milestone Event</span>
+<p class="text-white/80 text-sm">Luxury Private Dining</p>
+</div>
+</div>
+</div>
+<div class="masonry-item">
+<div class="group relative overflow-hidden rounded-xl">
+<img class="w-full transition-all duration-500 transform group-hover:scale-110" data-alt="A grand wedding stage setup with massive LED screens displaying a subtle golden bokeh effect. The stage is layered with white floral steps and accented with royal blue velvet seating. The design is modern, spacious, and reflects a high-tech approach to traditional celebrations." src="assets/event-06.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Grand Stage</span>
+<p class="text-white/80 text-sm">Stage Technology Integration</p>
+</div>
+</div>
+</div>
+<div class="masonry-item">
+<div class="group relative overflow-hidden rounded-xl">
+<img class="w-full transition-all duration-500 transform group-hover:scale-110" data-alt="A close-up shot of complex floral arrangements featuring white orchids and deep red peonies, illuminated by soft studio lighting. The texture and detail of the flowers represent the premium quality of 3 Star Event Management's floral design services. The style is clean, sharp, and focused on exquisite natural beauty." src="assets/event-07.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end">
+<span class="text-white font-label-sm uppercase tracking-widest mb-1">Floral Mastery</span>
+<p class="text-white/80 text-sm">Bespoke Floral Sculpting</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-gap-mobile md:py-section-gap-desktop bg-primary relative overflow-hidden" id="contact">
+<div class="absolute inset-0 opacity-10">
+<svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="40" id="grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="container max-w-7xl mx-auto px-container-padding relative z-10 text-center">
+<h2 class="font-display-lg text-display-lg-mobile md:text-headline-lg text-white mb-6">Ready to Plan Your Next Event?</h2>
+<p class="text-white/80 text-body-lg mb-10 max-w-2xl mx-auto">Contact us today for a free consultation and let's start creating your unforgettable experience.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="px-12 py-4 rounded-full bg-white text-primary font-label-sm uppercase tracking-widest hover:bg-white/90 transition-all shadow-xl">
+                        Schedule a Consultation
+                    </button>
+<button class="px-12 py-4 rounded-full border-2 border-white text-white font-label-sm uppercase tracking-widest hover:bg-white/10 transition-all">
+                        Call +94 77 328 8244
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-xl bg-surface-container-highest dark:bg-inverse-surface border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-grid-gutter max-w-7xl mx-auto px-container-padding py-section-gap-mobile md:py-section-gap-desktop">
+<div class="flex flex-col gap-4">
+<img alt="3 Star Event Management Logo" class="h-12 w-auto object-contain self-start" src="assets/logo.png"/>
+<p class="text-on-surface-variant font-body-md opacity-80">Pioneering luxury event management in Sri Lanka since 2008.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-headline-md text-body-lg font-bold">Quick Links</h4>
+<ul class="flex flex-col gap-2">
+<li><a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="home.html">Home</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="gallery.html">Gallery</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-primary underline transition-all" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-headline-md text-body-lg font-bold">Services</h4>
+<ul class="flex flex-col gap-2">
+<li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Wedding Decoration</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Corporate Events</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Stage Design</a></li>
+</ul>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-headline-md text-body-lg font-bold">Connect</h4>
+<p class="text-on-surface-variant font-body-md">No. 61, Hospital Road, Jaffna, Sri Lanka</p>
+<p class="text-on-surface-variant font-body-md font-bold">+94 77 328 8244</p>
+<div class="flex gap-4 mt-2">
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer">social_leaderboard</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer">photo_camera</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer">share</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-container-padding py-6 border-t border-outline-variant text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-60">© 2024 3 Star Event Management. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for smooth scrolling and header appearance
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-1', 'bg-white', 'dark:bg-white');
+                header.classList.remove('py-2', 'md:py-3');
+            } else {
+                header.classList.add('py-2', 'md:py-3', 'bg-white', 'dark:bg-white');
+                header.classList.remove('py-1');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-10', 'duration-700');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+<nav class="fixed bottom-3 left-1/2 z-[60] w-[calc(100%-24px)] -translate-x-1/2 rounded-xl bg-[#FFE8EC] px-6 py-2.5 shadow-2xl md:hidden" aria-label="Mobile bottom navigation">
+<div class="grid grid-cols-3 items-center gap-2 text-[11px] font-bold leading-tight">
+<a class="flex flex-col items-center gap-1 text-primary" href="home.html" aria-label="Home">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="gallery.html" aria-label="Gallery">
+<span class="material-symbols-outlined text-[18px]">photo_library</span>
+<span>Gallery</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="contact.html" aria-label="Contact">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span>Contact</span>
+</a>
+</div>
+</nav></body></html>
