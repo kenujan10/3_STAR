@@ -109,14 +109,67 @@
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
         .masonry {
-            column-count: 1;
-            column-gap: 24px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-auto-flow: dense;
+            grid-auto-rows: 29vw;
+            gap: 8px;
         }
-        @media (min-width: 768px) { .masonry { column-count: 2; } }
-        @media (min-width: 1024px) { .masonry { column-count: 3; } }
+        @media (min-width: 768px) {
+            .masonry {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                grid-auto-rows: 190px;
+                gap: 18px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .masonry {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                grid-auto-rows: 210px;
+                gap: 24px;
+            }
+        }
         .masonry-item {
             break-inside: avoid;
-            margin-bottom: 24px;
+            margin-bottom: 0;
+        }
+        .masonry-item:nth-child(6n + 1),
+        .masonry-item:nth-child(6n + 4) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .masonry-item:nth-child(8n + 3) {
+            grid-row: span 2;
+        }
+        .masonry-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @media (max-width: 767px) {
+            main.max-w-7xl {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .masonry-item {
+                border-radius: 8px;
+            }
+            .masonry-item:nth-child(6n + 1),
+            .masonry-item:nth-child(6n + 4) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+            .masonry-item:nth-child(8n + 3) {
+                grid-column: span 1;
+                grid-row: span 2;
+            }
+            .masonry-item > div {
+                padding: 8px;
+            }
+            .masonry-item span,
+            .masonry-item h3 {
+                display: none;
+            }
         }
         .primary-gradient-btn {
             background: linear-gradient(135deg, #E53935 0%, #1A237E 100%);
@@ -162,7 +215,7 @@
 </div>
 <div class="max-w-7xl mx-auto px-container-padding text-center">
 <h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6">Our Gallery</h1>
-<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Witness the magic of high-end corporate and luxury social events. From bespoke floral arrangements to architectural stage designs.</p>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Witness the magic of high-end baby cradle functions, weddings, and luxury social events. From bespoke floral arrangements to architectural stage designs.</p>
 </div>
 </header>
 <!-- Filter Section -->
@@ -173,7 +226,7 @@
 <button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all" data-filter="weddings">Weddings</button>
 <button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all" data-filter="birthdays">Birthdays</button>
 <button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all" data-filter="engagements">Engagements</button>
-<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all" data-filter="corporate">Corporate</button>
+<button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all" data-filter="baby-cradle">Baby Cradle Function</button>
 <button class="px-6 py-2 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider hover:border-primary hover:text-primary transition-all" data-filter="stage">Stage Decorations</button>
 </div>
 </div>
@@ -183,18 +236,18 @@
 <div class="masonry">
 <!-- Item 1: Wedding -->
 <div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
-<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A luxurious high-end wedding reception in a grand ballroom. The scene features massive, ethereal floral installations with white roses and lilies hanging from the ceiling. Warm, golden ambient lighting creates a soft, romantic glow. The decor reflects a premium, high-society corporate creative aesthetic with a clean, light-mode background and subtle red accents in the floral arrangements." src="assets/event-04.jpg"/>
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A luxurious high-end wedding reception in a grand ballroom. The scene features massive, ethereal floral installations with white roses and lilies hanging from the ceiling. Warm, golden ambient lighting creates a soft, romantic glow with a clean, premium creative aesthetic." src="assets/event-04.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
 <span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
 <h3 class="text-white font-headline-md text-headline-md">The Grand Crystal Gala</h3>
 </div>
 </div>
-<!-- Item 2: Corporate -->
-<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="corporate">
-<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A sophisticated corporate stage set for a technology conference. The design is modern and geometric, featuring glassmorphism elements and glowing LED strips in primary blue. The lighting is crisp and professional, illuminating a sleek podium. The overall aesthetic is high-end corporate creative, using a clean and airy layout with premium materials and structural precision." src="assets/event-05.jpg"/>
+<!-- Item 2: Baby Cradle Function -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="baby-cradle">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Baby cradle function decoration with floral cradle, green carpet, warm lighting, and blue cream drapes." src="assets/baby-cradle-01.jpg"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Corporate</span>
-<h3 class="text-white font-headline-md text-headline-md">Tech Summit Mainstage</h3>
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Baby Cradle Function</span>
+<h3 class="text-white font-headline-md text-headline-md">Floral Cradle Setup</h3>
 </div>
 </div>
 <!-- Item 3: Birthday -->
@@ -253,6 +306,198 @@
 <h3 class="text-white font-headline-md text-headline-md">Royal Green Stage</h3>
 </div>
 </div>
+<!-- Item 10: Baby Cradle Function -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="baby-cradle">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Baby cradle function moon arch with sunflower flowers, hanging cradle, green carpet, and warm lights." src="assets/baby-cradle-02.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Baby Cradle Function</span>
+<h3 class="text-white font-headline-md text-headline-md">Sunflower Moon Cradle</h3>
+</div>
+</div>
+<!-- Item 11: Baby Cradle Function -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="baby-cradle">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Baby cradle function with red rose moon arch, hanging cradle, cream backdrop, and decorative fence." src="assets/baby-cradle-03.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Baby Cradle Function</span>
+<h3 class="text-white font-headline-md text-headline-md">Rose Cradle Decor</h3>
+</div>
+</div>
+<!-- Item 12: Baby Cradle Function -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="baby-cradle">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Baby cradle function yellow floral stage with mother artwork backdrop, sofa, green carpet, and warm decoration lights." src="assets/baby-cradle-04.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Baby Cradle Function</span>
+<h3 class="text-white font-headline-md text-headline-md">Traditional Cradle Stage</h3>
+</div>
+</div>
+<!-- Item 13: Baby Cradle Function -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="baby-cradle">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Baby cradle function floral cradle setup with turquoise and cream backdrop, green carpet, and decorative lighting." src="assets/baby-cradle-05.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Baby Cradle Function</span>
+<h3 class="text-white font-headline-md text-headline-md">Garden Cradle Decor</h3>
+</div>
+</div>
+<!-- Item 14: Baby Cradle Function -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="baby-cradle">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Baby cradle function with yellow flower moon arch, hanging cradle, green drapes, and warm decorative lights." src="assets/baby-cradle-06.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Baby Cradle Function</span>
+<h3 class="text-white font-headline-md text-headline-md">Yellow Bloom Cradle</h3>
+</div>
+</div>
+<!-- Item 15: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wedding stage with floral canopy, gold sofa, soft pink drapes, green carpet, and warm lighting." src="assets/wedding-new-01.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Floral Sofa Stage</h3>
+</div>
+</div>
+<!-- Item 16: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Outdoor wedding setup at sunset with white arch panels, hanging lights, floral accents, and seaside backdrop." src="assets/wedding-new-02.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Sunset Wedding Arch</h3>
+</div>
+</div>
+<!-- Item 17: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wedding stage with red carpet, floral circular arch, gold sofa, pink backdrop, and warm pendant lights." src="assets/wedding-new-03.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Rose Circle Stage</h3>
+</div>
+</div>
+<!-- Item 18: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wedding sofa setup with floral arch, purple lighting, side flower stands, and white drape backdrop." src="assets/wedding-new-04.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Evening Floral Lounge</h3>
+</div>
+</div>
+<!-- Item 19: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Outdoor wedding stage with white floral design, greenery, warm lamps, and garden entrance decor." src="assets/wedding-new-05.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">White Garden Stage</h3>
+</div>
+</div>
+<!-- Item 20: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wedding sofa close-up with gold seating, white floral arch, hanging bulbs, and elegant table decor." src="assets/wedding-new-06.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Golden Couple Seat</h3>
+</div>
+</div>
+<!-- Item 21: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wedding reception stage with blue and white floral arch, gold furniture, warm lights, and green carpet." src="assets/wedding-new-07.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Blue Floral Reception</h3>
+</div>
+</div>
+<!-- Item 22: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Outdoor birthday and celebration decoration with balloon arch, floral ring, princess cutouts, and night lighting." src="assets/wedding-new-08.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Outdoor Celebration Decor</h3>
+</div>
+</div>
+<!-- Item 23: Wedding -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="weddings">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Wedding stage with soft mint and white drapes, floral moon arch, gold sofa, and warm floor lights." src="assets/wedding-new-09.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Weddings</span>
+<h3 class="text-white font-headline-md text-headline-md">Mint Wedding Stage</h3>
+</div>
+</div>
+<!-- Item 24: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday decoration with white floral arch, large number 21, green carpet, and soft green lighting." src="assets/birthday-new-01.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">White Bloom 21st</h3>
+</div>
+</div>
+<!-- Item 25: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday cake table with floral tree, number 21, warm bulbs, and purple lighting." src="assets/birthday-new-02.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Subothini Birthday Table</h3>
+</div>
+</div>
+<!-- Item 26: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday stage with large number 70, green and gold balloons, floral stands, and warm event lights." src="assets/birthday-new-03.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Golden 70th Celebration</h3>
+</div>
+</div>
+<!-- Item 27: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday stage with number 21, black and silver balloons, cake table, flowers, and warm lighting." src="assets/birthday-new-04.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Black Silver 21st</h3>
+</div>
+</div>
+<!-- Item 28: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday decoration with number 21, blue and gold balloons, white floral pillars, and green carpet." src="assets/birthday-new-05.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Blue Gold 21st</h3>
+</div>
+</div>
+<!-- Item 29: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday stage with large number 82, green balloons, white fence, and floral decoration." src="assets/birthday-new-06.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">82nd Birthday Decor</h3>
+</div>
+</div>
+<!-- Item 30: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday stage with number 21, blue balloon arch, cake table, and black white drapes." src="assets/birthday-new-07.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Blue 21st Party</h3>
+</div>
+</div>
+<!-- Item 31: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Birthday stage with purple and silver balloon arch, large ONE letters, and floral accents." src="assets/birthday-new-08.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Purple One Birthday</h3>
+</div>
+</div>
+<!-- Item 32: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Outdoor birthday decoration with red balloons, rose arch, birthday cake, and white drape backdrop." src="assets/birthday-new-09.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Red Rose Birthday</h3>
+</div>
+</div>
+<!-- Item 33: Birthday -->
+<div class="masonry-item group relative overflow-hidden rounded-xl glass-card transition-all hover:border-primary" data-category="birthdays">
+<img class="w-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Kids birthday stage with jungle animal cutouts, ONE letters, purple drapes, balloons, and flowers." src="assets/birthday-new-10.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<span class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest mb-2">Birthdays</span>
+<h3 class="text-white font-headline-md text-headline-md">Jungle One Birthday</h3>
+</div>
+</div>
 </div>
 
 </main>
@@ -286,7 +531,7 @@
 <h4 class="font-headline-md text-body-lg font-bold">Services</h4>
 <ul class="flex flex-col gap-2">
 <li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Wedding Decoration</a></li>
-<li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Corporate Events</a></li>
+<li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Baby Cradle Function</a></li>
 <li><a class="text-on-surface-variant font-body-md hover:text-primary transition-all" href="gallery.html">Stage Design</a></li>
 </ul>
 </div>
